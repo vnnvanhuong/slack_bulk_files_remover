@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:p="http://primefaces.org/ui">
+ <h:head>
+  <title>Slack: Bulk Files Remover</title>
+ </h:head>
+ <h:body>
+  	<h1>Available Files</h1>
+	<h:form>
+	   <p:messages autoUpdate="true"></p:messages>
+	   <p:inputText value="#{controller.token}" placeholder="please enter your token"></p:inputText>
+	   <p:commandButton value="Obtain" actionListener="#{controller.onListFiles}" update="@form"></p:commandButton>
+	   <p:dataTable var="file" value="#{controller.files}">
+		    <p:column headerText="Id">
+		        <h:outputText value="#{file.id}" />
+		    </p:column>
+		 
+		    <p:column headerText="Name">
+		        <h:outputText value="#{file.name}" />
+		    </p:column>
+		</p:dataTable>
+	   <p:commandButton value="Delete All" actionListener="#{controller.onDeleteAll}" update="@form"></p:commandButton>
+	</h:form>
+ </h:body>
+</html>
